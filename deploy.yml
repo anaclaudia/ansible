@@ -1,0 +1,9 @@
+---
+  - name: webserver-01
+    hosts: 
+    sudo: yes
+    user: ubuntu
+    gather_facts: False
+
+    roles:
+       - nginx

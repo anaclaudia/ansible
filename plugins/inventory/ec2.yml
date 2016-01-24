@@ -1,0 +1,38 @@
+# Basic provisioning example
+
+- name: Create AWS resources
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  tasks:
+   - name: create the webservers security group
+     ec2_group:
+      name: ec2-security-group
+      description: "A Security group"
+      region: "{{aws_region}}"
+      rules:
+       - proto: tcp
+         from_port: 22
+         to_port: 22    
+         cidr_ip: 0.0.0.0/0
+       
+       - proto: tcp
+         from_port: 80
+         to_port: 80
+         cidr_ip: 0.0.0.0/0
+      
+      rules_egress:
+         - proto: all
+           cidr_ip: 0.0.0.0/0
+
+   - name: creating an ec2 instance
+     ec2:
+       key_name: "{{key_name}}"
+       region: "{{aws_region}}"
+       group: ec2-security-group
+       instance_type: "{{instance_type}}"
+       count: 1
+       image: "{{ami_id}}"
+       wait: yes
+     register: ec2

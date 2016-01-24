@@ -1,0 +1,15 @@
+---
+# Variables listed here are applicable to all host groups
+
+# ec2 variables
+ key_name: ansible_test
+ aws_region: us-west-1
+ ami_id: ami-df6a8b9b
+ instance_type: t2.micro
+ vpc_id: 7841901d
+ vpc_subnet_id: subnet-2e9a6e77
+
+# nginx variables
+ nginx_url: http://nginx.org/keys/nginx_signing.key
+ nginx_version: nginx
+ nginx_repository: deb http://nginx.org/packages/ubuntu/ trusty nginx

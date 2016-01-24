@@ -1,0 +1,5 @@
+[local]
+localhost
+
+[webservers]
+webserver_01

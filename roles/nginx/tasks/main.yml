@@ -1,0 +1,27 @@
+---
+- name: Add the key used to NGINX pkg
+  apt_key: 
+    url={{ nginx_url }} state=present
+  sudo: yes
+  tags: nginx
+
+- name: Add the official repository to install NGINX
+  apt_repository:
+    repo: {{ nginx_repository }}
+    state: present
+  sudo: yes
+  tags: nginx
+
+- name: Update packages and install NGINX
+  apt: 
+    pkg: nginx 
+    update_cache: yes
+    state: present
+  sudo: yes
+  tags: nginx
+
+- name: Starting NGINX
+  service:
+    name: nginx
+    state: started
+  sudo: yes
