@@ -8,7 +8,7 @@
   tasks:
    - name: create the webservers security group
      ec2_group:
-      name: ec2-security-group
+      name: ec2-webservers
       description: "A Security group"
       region: "{{aws_region}}"
       rules:
@@ -30,7 +30,7 @@
      ec2:
        key_name: "{{key_name}}"
        region: "{{aws_region}}"
-       group: ec2-security-group
+       group: ec2-webservers
        instance_type: "{{instance_type}}"
        count: 1
        image: "{{ami_id}}"

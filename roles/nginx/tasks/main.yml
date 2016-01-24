@@ -7,7 +7,7 @@
 
 - name: Add the official repository to install NGINX
   apt_repository:
-    repo: {{ nginx_repository }}
+    repo: "{{ nginx_repository }}"
     state: present
   sudo: yes
   tags: nginx

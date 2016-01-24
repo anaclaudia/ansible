@@ -1,6 +1,7 @@
 ---
-  - name: webserver-01
-    hosts: 
+  - name: Installing NGINX
+    hosts: security_group_ec2-webservers
+    connection: local
     sudo: yes
     user: ubuntu
     gather_facts: False
